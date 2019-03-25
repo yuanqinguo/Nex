@@ -60,10 +60,11 @@ int CNetEvent::start(int port)
 			pArg->evbase = base;
 			pArg->obj = this;
 
-        	struct evconnlistener* listener = evconnlistener_new_bind(base, accept_cb, (void *)pArg,
-																	LEV_OPT_REUSEABLE|LEV_OPT_THREADSAFE|LEV_OPT_CLOSE_ON_FREE|LEV_OPT_REUSEABLE_PORT, 1024,
-																	(struct sockaddr*)&sin,
-																	sizeof(sin));
+        	struct evconnlistener* listener = 
+				evconnlistener_new_bind(base, accept_cb, (void *)pArg,
+				LEV_OPT_REUSEABLE|LEV_OPT_THREADSAFE|LEV_OPT_CLOSE_ON_FREE|LEV_OPT_REUSEABLE_PORT, 1024,
+				(struct sockaddr*)&sin,
+				sizeof(sin));
 
 			//注册定时器
 			struct timeval tv;
